@@ -12,7 +12,7 @@ import { NextRequest, NextResponse } from "next/server";
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
-	// console.log({ NextAuthRequest: req })
+	console.log({ NextAuthRequest: req })
 	const { nextUrl } = req;
 	const isLoggedIn = !!req.auth;
 	// console.log({ ReqAuthUser: req.auth.user });
@@ -36,6 +36,15 @@ export default auth((req) => {
 		return Response.redirect(new URL("/auth/login", nextUrl));
 	}
 
+	// const res = NextResponse.next();
+	// console.log(res);
+	// res.cookies.set({
+	// 	name: 'auth-token',
+	// 	value: 'fast',
+	// 	path: '/',
+	// })
+
+	// return res;
 	return null;
 })
 
